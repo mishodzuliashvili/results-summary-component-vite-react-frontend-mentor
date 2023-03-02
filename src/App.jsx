@@ -1,34 +1,67 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import React from "react";
+export default function App() {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="app">
+      <main>
+        <div className="summary-component-wrapper">
+          <div className="result">
+            <h2 className="result__heading">Your Result</h2>
+            <div className="result__score">
+              <p className="result__get-score">76</p>
+              <p className="result__full-score">of 100</p>
+            </div>
+            <h1 className="result__title">Great</h1>
+            <p className="result__description">
+              You scored higher than 65% of the people who have taken these
+              tests.
+            </p>
+          </div>
+          <div className="summary">
+            <h2 className="summary__heading">Summary</h2>
+            <ul className="summary__list">
+              {data.map(item => (
+                <li className={"summary__item summary__item--" + item.className}>
+                <div className="summary__title">
+                  <img src={item.icon} alt="" className="summary__icon" />
+                  <p className="summary__text">{item.category}</p>
+                </div>
+                <p className="summary__score">
+                  <span className="summary__score-point">{item.score}</span> / 100
+                </p>
+              </li>
+              ))}
+            </ul>
+            <button className="summary__button">Continue</button>
+          </div>
+        </div>
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+const data = [
+  {
+    category: "Reaction",
+    score: 80,
+    icon: "./assets/images/icon-reaction.svg",
+    className: "red"
+  },
+  {
+    category: "Memory",
+    score: 92,
+    icon: "./assets/images/icon-memory.svg",
+    className: "yellow"
+  },
+  {
+    category: "Verbal",
+    score: 61,
+    icon: "./assets/images/icon-verbal.svg",
+    className: "teal"
+  },
+  {
+    category: "Visual",
+    score: 72,
+    icon: "./assets/images/icon-visual.svg",
+    className: "blue"
+  },
+];
